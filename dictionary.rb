@@ -91,16 +91,20 @@ class DictionaryUI
  		searcher = gets.chomp 
  		dictionary= @main_dictionary
 
- 		if mode ==1 
+ 		if mode ==1
+ 		puts "You are searching for an exact match to '#{searcher}'" 
  		puts exact_match(searcher,dictionary)
 
  		elsif mode ==2
+ 		puts "You are searching for words that include '#{searcher}'"
  		puts part_match(searcher,dictionary)
 
  		elsif mode ==3
+ 		puts "You are searching for words that begin with '#{searcher}'"
  		puts begins_match(searcher,dictionary)
 
  		elsif mode ==4
+ 		puts "You are searching for words that end with '#{searcher}'"
  		puts ends_match(searcher,dictionary)
  	end
 
