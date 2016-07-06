@@ -21,55 +21,52 @@ class DictionaryUI
 	def initialize
 		@dictionary_loader = DictionaryLoader.new
 		@main_dictionary = @dictionary_loader.loading('5desk.txt')
+		@result = []
 	end
 
 
 	def exact_match (search,dictionary)
-		result = []
 
 		dictionary.each do |word|
-			result << word if word.match(/^#{search}$/)
+			@result << word if word.match(/^#{search}$/)
  		end
- 		if result.size == 0
+ 		if @result.size == 0
  			puts "There was no matches found"
  		end
- 		result
+ 		@result
  	end
 
 	def part_match (search,dictionary)
-		result = []
 
 		dictionary.each do |word|
-			result << word if word.match(/^.*#{search}.*$/)
+			@result << word if word.match(/^.*#{search}.*$/)
  		end
- 		if result.size == 0
+ 		if @result.size == 0
  			puts "There was no matches found"
  		end
- 		result
+ 		@result
  	end
 
 	def begins_match (search,dictionary)
-		result = []
 
 		dictionary.each do |word|
-			result << word if word.match(/^#{search}.*$/)
+			@result << word if word.match(/^#{search}.*$/)
  		end
- 		if result.size == 0
+ 		if @result.size == 0
  			puts "There was no matches found"
  		end
- 		result
+ 		@result
  	end
 
  	def ends_match (search,dictionary)
-		result = []
 
 		dictionary.each do |word|
-			result << word if word.match(/^.*#{search}$/)
+			@result << word if word.match(/^.*#{search}$/)
  		end
- 		if result.size == 0
+ 		if @result.size == 0
  			puts "There was no matches found"
  		end
- 		result
+ 		@result
  	end
 
 
@@ -94,18 +91,22 @@ class DictionaryUI
  		if mode ==1
  		puts "You are searching for an exact match to '#{searcher}'" 
  		puts exact_match(searcher,dictionary)
+ 		puts "There were #{@result.size} matches found"
 
  		elsif mode ==2
  		puts "You are searching for words that include '#{searcher}'"
  		puts part_match(searcher,dictionary)
+ 		puts "There were #{@result.size} matches found"
 
  		elsif mode ==3
  		puts "You are searching for words that begin with '#{searcher}'"
  		puts begins_match(searcher,dictionary)
+ 		puts "There were #{@result.size} matches found"
 
  		elsif mode ==4
  		puts "You are searching for words that end with '#{searcher}'"
  		puts ends_match(searcher,dictionary)
+ 		puts "There were #{@result.size} matches found"
  	end
 
  			
